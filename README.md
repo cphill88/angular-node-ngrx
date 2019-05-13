@@ -13,3 +13,4 @@ This is a very simple app that simulates a food store. It was created to tinker 
 ## TODO
 Add a view for the shopping cart.
 Expand features to take further advantage of the state management provided by ngrx.
+Add ability to checkout.
