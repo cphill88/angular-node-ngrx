@@ -29,7 +29,7 @@ app.get('/', function(req,res) {
     res.sendFile(path.join(__dirname+'/dist/angular-node-ngrx/index.html'));
 });
 
-app.get('/coupons', retrieveCoupon, function(req,res) {\
+app.get('/coupons', retrieveCoupon, function(req,res) {
 
 });
 
