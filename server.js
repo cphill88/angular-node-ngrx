@@ -24,9 +24,9 @@ app.use((req, res, next) => {
 
 app.use(express.static(__dirname + '/dist/angular-node-ngrx'));
 
-app.get('/*', function(req,res) {
+app.get('/', retrieveCoupon, function(req,res) {
     
-res.sendFile(path.join(__dirname+'/dist/angular-node-ngrx/index.html'));
+    res.sendFile(path.join(__dirname+'/dist/angular-node-ngrx/index.html'));
 });
 
 app.get('/fruits', (req, res) => {
