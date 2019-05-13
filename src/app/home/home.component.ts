@@ -5,6 +5,8 @@ import { NgRedux, select } from '@angular-redux/store';
 import { InitialState } from '../store/reducer';
 import { FoodService } from '../food.service';
 import { Observable } from 'rxjs';
+import { CouponService } from '../coupon.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -32,10 +34,18 @@ export class HomeComponent implements OnInit {
       alt: 'Get ready to slice'
     }
   ];
+  coupon;
 
-  constructor(private ngRedux: NgRedux<InitialState>, private foodService: FoodService) { }
+  constructor(private ngRedux: NgRedux<InitialState>, private foodService: FoodService, private couponService: CouponService, private route: ActivatedRoute) { }
 
   ngOnInit() {
+    this.route.queryParamMap.subscribe(queryParams => {
+      this.coupon = queryParams.get('coupon');
+      if (this.coupon) {
+        this.couponService.getCoupon(this.coupon);
+      }
+
+    });
     this.foodService.getAll();
   }
 

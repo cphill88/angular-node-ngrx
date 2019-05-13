@@ -28,6 +28,21 @@ export function ShopReducer(state = initialState, action) {
           ...state,
           cart: [...state.cart.filter(item => item.name !== action.payload.name)]
         };
+      case ActionTypes.ApplyCoupon:
+        return {
+          ...state,
+          items: state.items.map((element) => {
+            let priceReduction;
+            if (action.payload.amount_off) {
+              priceReduction = action.payload.amount_off / 100;
+              return {...element, price: (element.price - priceReduction).toFixed(2)};
+            } else if (action.payload.percent_off) {
+              priceReduction = action.payload.percent_off / 100;
+              return {...element, price: (element.price - element.price * priceReduction).toFixed(2)};
+            }
+            return element;
+          })
+        };
 
       default:
         return state;

@@ -10,6 +10,7 @@ import { HeaderComponent } from './header/header.component';
 import { ShopReducer, InitialState, initialState } from './store/reducer';
 import { ProductComponent } from './product/product.component';
 import { ProductListComponent } from './product-list/product-list.component';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,7 @@ import { ProductListComponent } from './product-list/product-list.component';
     ProductComponent,
     ProductListComponent,
   ],
-  imports: [BrowserModule, HttpClientModule, NgReduxModule],
+  imports: [BrowserModule, HttpClientModule, NgReduxModule, RouterModule.forRoot([])],
   providers: [],
   bootstrap: [AppComponent]
 })
