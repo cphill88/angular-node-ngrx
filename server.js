@@ -14,9 +14,6 @@ const retrieveCoupon = async (req, res, next) => {
     next();
 }
 
-var distDir = __dirname + "/dist/";
-app.use(express.static(distDir));
-
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:false}));
 app.use((req, res, next) => {
@@ -25,14 +22,15 @@ app.use((req, res, next) => {
     next();
 });
 
-app.get('/', retrieveCoupon, (req, res) => {
+app.use(express.static(__dirname + '/dist/angular-node-ngrx'));
+
+app.get('/*', function(req,res) {
     
+res.sendFile(path.join(__dirname+'/dist/angular-node-ngrx/index.html'));
 });
 
 app.get('/fruits', (req, res) => {
     res.json(fruits);
 });
 
-app.listen(port, () => {
-
-})
+app.listen(port);
