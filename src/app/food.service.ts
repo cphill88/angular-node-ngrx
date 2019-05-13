@@ -15,7 +15,7 @@ export class FoodService {
   constructor(private http: HttpClient, private ngRedux: NgRedux<InitialState>) {}
 
   getAll() {
-    this.http.get(`${environment.baseUrl}:4000/fruits`).subscribe((products: Array<Product>) => {
+    this.http.get(`${environment.baseUrl}/fruits`).subscribe((products: Array<Product>) => {
       this.ngRedux.dispatch(LoadItems(products));
     });
   }
