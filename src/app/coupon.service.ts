@@ -13,7 +13,7 @@ export class CouponService {
   constructor(private http: HttpClient, private ngRedux: NgRedux<InitialState>) {}
 
   getCoupon(coupon) {
-    this.http.get(`${environment.baseUrl}?coupon=${coupon}`).subscribe((discount) => {
+    this.http.get(`${environment.baseUrl}:4000?coupon=${coupon}`).subscribe((discount) => {
       if (discount) {
         this.ngRedux.dispatch(ApplyCoupon(discount));
       }

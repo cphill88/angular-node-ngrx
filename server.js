@@ -27,10 +27,9 @@ app.get('/', retrieveCoupon, (req, res) => {
 });
 
 app.get('/fruits', (req, res) => {
-    console.log(fruits);
     res.json(fruits);
 });
 
 app.listen(port, () => {
-    console.log(`Server started on port ${port}`)
+    
 })
