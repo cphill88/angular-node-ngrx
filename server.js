@@ -14,6 +14,9 @@ const retrieveCoupon = async (req, res, next) => {
     next();
 }
 
+var distDir = __dirname + "/dist/";
+app.use(express.static(distDir));
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:false}));
 app.use((req, res, next) => {
@@ -31,5 +34,5 @@ app.get('/fruits', (req, res) => {
 });
 
 app.listen(port, () => {
-    
+
 })
